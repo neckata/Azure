@@ -1,0 +1,208 @@
+.hljs-comment {
+  color: #008000;
+}
+
+.hljs-pscommand,
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+  color: #0101fd;
+}
+
+.hljs-literal {
+  color: #07704a;
+}
+
+.hljs-string .hljs-subst {
+  color: var(--theme-text);
+}
+
+.hljs-string,
+.hljs-string .hljs-subst .hljs-string,
+.hljs-section,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-deletion,
+.hljs-code {
+  color: #a31515;
+}
+
+.hljs-parameter,
+.hljs-type,
+.hljs-attribute,
+.hljs-title,
+.hljs-addition,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-meta {
+  color: #007d9a;
+}
+
+.hljs-doctag {
+  color: #737373;
+}
+
+.hljs-attr {
+  color: #0451a5;
+}
+
+.hljs-control {
+  color: #af00db;
+}
+
+.hljs-helper {
+  color: #795e26;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+  color: #0071e1;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: 600;
+}
+
+.hljs-reserved,
+.hljs-constant {
+  color: #cd3131;
+}
+
+.theme-dark .line-highlight,
+.theme-high-contrast .line-highlight {
+  background-color: darkgreen;
+}
+
+.theme-dark .hljs-comment,
+.theme-high-contrast .hljs-comment {
+  color: #57a64a;
+}
+
+.theme-dark .hljs-number,
+.theme-high-contrast .hljs-number {
+  color: #b5cea8;
+}
+
+.theme-dark .hljs-pscommand,
+.theme-dark .hljs-keyword,
+.theme-dark .hljs-selector-tag,
+.theme-dark .hljs-built_in,
+.theme-dark .hljs-name,
+.theme-dark .hljs-tag,
+.theme-high-contrast .hljs-pscommand,
+.theme-high-contrast .hljs-keyword,
+.theme-high-contrast .hljs-selector-tag,
+.theme-high-contrast .hljs-built_in,
+.theme-high-contrast .hljs-name,
+.theme-high-contrast .hljs-tag {
+  color: #569cd6;
+}
+
+.theme-dark .hljs-literal,
+.theme-high-contrast .hljs-literal {
+  color: #569cd6;
+}
+
+.theme-dark .hljs-title,
+.theme-high-contrast .hljs-title {
+  color: #4ec9b0;
+}
+
+.theme-dark .hljs-string .hljs-subst,
+.theme-high-contrast .hljs-string .hljs-subst {
+  color: var(--theme-text);
+}
+
+.theme-dark .hljs-string,
+.theme-dark .hljs-string .hljs-subst .hljs-string,
+.theme-dark .hljs-section,
+.theme-dark .hljs-attribute,
+.theme-dark .hljs-template-tag,
+.theme-dark .hljs-template-variable,
+.theme-dark .hljs-deletion,
+.theme-dark .hljs-type,
+.theme-dark .hljs-code,
+.theme-high-contrast .hljs-string,
+.theme-high-contrast .hljs-string .hljs-subst .hljs-string,
+.theme-high-contrast .hljs-section,
+.theme-high-contrast .hljs-attribute,
+.theme-high-contrast .hljs-template-tag,
+.theme-high-contrast .hljs-template-variable,
+.theme-high-contrast .hljs-deletion,
+.theme-high-contrast .hljs-type,
+.theme-high-contrast .hljs-code {
+  color: #ce9178;
+}
+
+.theme-dark .hljs-addition,
+.theme-dark .hljs-selector-attr,
+.theme-dark .hljs-selector-pseudo,
+.theme-dark .hljs-meta,
+.theme-high-contrast .hljs-addition,
+.theme-high-contrast .hljs-selector-attr,
+.theme-high-contrast .hljs-selector-pseudo,
+.theme-high-contrast .hljs-meta {
+  color: #2b91af;
+}
+
+.theme-dark .hljs-doctag,
+.theme-high-contrast .hljs-doctag {
+  color: #808080;
+}
+
+.theme-dark .hljs-attr,
+.theme-high-contrast .hljs-attr {
+  color: #9cdcfe;
+}
+
+.theme-dark .hljs-parameter,
+.theme-dark .hljs-type,
+.theme-dark .hljs-attribute,
+.theme-dark .hljs-title,
+.theme-dark .hljs-addition,
+.theme-dark .hljs-selector-attr,
+.theme-dark .hljs-selector-pseudo,
+.theme-dark .hljs-meta,
+.theme-high-contrast .hljs-parameter,
+.theme-high-contrast .hljs-type,
+.theme-high-contrast .hljs-attribute,
+.theme-high-contrast .hljs-title,
+.theme-high-contrast .hljs-addition,
+.theme-high-contrast .hljs-selector-attr,
+.theme-high-contrast .hljs-selector-pseudo,
+.theme-high-contrast .hljs-meta {
+  color: #01cfff;
+}
+
+.theme-dark .hljs-control,
+.theme-high-contrast .hljs-control {
+  color: #c586c0;
+}
+
+.theme-dark .hljs-helper,
+.theme-high-contrast .hljs-helper {
+  color: #dcdcaa;
+}
+
+.theme-dark .hljs-symbol,
+.theme-dark .hljs-bullet,
+.theme-dark .hljs-link,
+.theme-high-contrast .hljs-symbol,
+.theme-high-contrast .hljs-bullet,
+.theme-high-contrast .hljs-link {
+  color: #808080;
+}
+
+.theme-dark .hljs-reserved,
+.theme-dark .hljs-constant,
+.theme-high-contrast .hljs-reserved,
+.theme-high-contrast .hljs-constant {
+  color: #f44747;
+}

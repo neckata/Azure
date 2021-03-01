@@ -5,7 +5,7 @@ az functionapp deployment source config-zip \
 -n <function-app-name> \
 --src <zip-file>
 
-Create Storage Account
+-----Storage Account-----
 
 az storage account create \
   --name $STORAGE_ACCOUNT_NAME \
@@ -13,13 +13,21 @@ az storage account create \
   --kind StorageV2 \
   --sku Standard_LRS
 
-Create an Azure Cosmos DB account
+az storage account show-connection-string 
+--name <name> 
+--resource-group [sandbox resource group name]
+
+az storage queue delete 
+--name newsqueue 
+--connection-string <connection-string>
+
+---Azure Cosmos DB account----
 
 az cosmosdb create  \
   --name msl-sigr-cosmos-$(openssl rand -hex 5) \
   --resource-group [sandbox resource group name]
 
-Create a SignalR account
+---SignalR account------
 
 az signalr create \
   --name $SIGNALR_SERVICE_NAME \
@@ -27,10 +35,10 @@ az signalr create \
   --sku Free_DS2 \
   --unit-count 1
 
-Create Service Bus
+----Service Bus-----
 
 az servicebus namespace authorization-rule keys list \
-    --resource-group learn-d5108f82-de70-4386-b4ad-cea96d5a53b3 \
+    --resource-group [sandbox resource group name] \
     --name RootManageSharedAccessKey \
     --query primaryConnectionString \
     --output tsv \
