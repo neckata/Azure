@@ -5,11 +5,6 @@ VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Functions", "Functions\Functions.csproj", "{818C3A09-F36F-44CF-A2B4-6F0EF0F88A47}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7F5217D7-AE70-4B84-A1BD-25A5526FEEBC}"
-	ProjectSection(SolutionItems) = preProject
-		AzureCliCommands.txt = AzureCliCommands.txt
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureWebApplicationTest", "AzureWebApplicationTest\AzureWebApplicationTest.csproj", "{8D3F3A06-F5EA-4537-80F2-9A1D78B3D5D8}"
 EndProject
 Global
