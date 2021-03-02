@@ -1,4 +1,3 @@
-
 <div>
   <h1>az group</h1>
 
@@ -28,4 +27,232 @@
 <div>
   <h1>az resource</h1>
 
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az resource create --properties
+                   [--api-version]
+                   [--id]
+                   [--is-full-object]
+                   [--latest-include-preview]
+                   [--location]
+                   [--name]
+                   [--namespace]
+                   [--parent]
+                   [--resource-group]
+                   [--resource-type]
+                   [--subscription]"><span><span class="hljs-keyword">az resource create </span><span class="hljs-parameter">--properties</span>
+  <span class="hljs-parameter">[--api-version]</span>
+  <span class="hljs-parameter">[--id]</span>
+  <span class="hljs-parameter">[--is-full-object]</span>
+  <span class="hljs-parameter">[--latest-include-preview]</span>
+  <span class="hljs-parameter">[--location]</span>
+  <span class="hljs-parameter">[--name]</span>
+  <span class="hljs-parameter">[--namespace]</span>
+  <span class="hljs-parameter">[--parent]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--resource-type]</span>
+  <span class="hljs-parameter">[--subscription]</span></span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az resource list [--location]
+                 [--name]
+                 [--namespace]
+                 [--query-examples]
+                 [--resource-group]
+                 [--resource-type]
+                 [--subscription]
+                 [--tag]"><span><span class="hljs-keyword">az resource list </span><span class="hljs-parameter">[--location]</span>
+  <span class="hljs-parameter">[--name]</span>
+  <span class="hljs-parameter">[--namespace]</span>
+  <span class="hljs-parameter">[--query-examples]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--resource-type]</span>
+  <span class="hljs-parameter">[--subscription]</span>
+  <span class="hljs-parameter">[--tag]</span></span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az resource delete [--api-version]
+                   [--ids]
+                   [--latest-include-preview]
+                   [--name]
+                   [--namespace]
+                   [--parent]
+                   [--resource-group]
+                   [--resource-type]
+                   [--subscription]"><span><span class="hljs-keyword">az resource delete </span><span class="hljs-parameter">[--api-version]</span>
+  <span class="hljs-parameter">[--ids]</span>
+  <span class="hljs-parameter">[--latest-include-preview]</span>
+  <span class="hljs-parameter">[--name]</span>
+  <span class="hljs-parameter">[--namespace]</span>
+  <span class="hljs-parameter">[--parent]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--resource-type]</span>
+  <span class="hljs-parameter">[--subscription]</span></span></code></pre>
+
+</div>
+
+<div>
+  <h1> az vm</h1>
+
+
+  <pre tabindex="0" class="has-inner-focus"><span class="hljs-keyword">az vm create </span><span class="hljs-parameter">--name</span>
+  <span class="hljs-parameter">--resource-group</span>
+  <span class="hljs-parameter">[--host]</span>
+  <span class="hljs-parameter">[--image]</span>
+</pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az vm list [--query-examples]
+           [--resource-group]
+           [--show-details]
+           [--subscription]"><span><span class="hljs-keyword">az vm list </span><span class="hljs-parameter">[--query-examples]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--show-details]</span>
+  <span class="hljs-parameter">[--subscription]</span></span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az vm delete [--force-deletion]
+             [--ids]
+             [--name]
+             [--no-wait]
+             [--resource-group]
+             [--subscription]
+             [--yes]"><span><span class="hljs-keyword">az vm delete </span><span class="hljs-parameter">[--force-deletion]</span>
+  <span class="hljs-parameter">[--ids]</span>
+  <span class="hljs-parameter">[--name]</span>
+  <span class="hljs-parameter">[--no-wait]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--subscription]</span>
+  <span class="hljs-parameter">[--yes]</span></span></code></pre>
+</div>
+
+<div>
+  <h1>az container</h1>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-interactive="azurecli" data-author-content="az container create -g MyResourceGroup --name myapp --image myimage:latest --cpu 1 --memory 1"><span><span class="hljs-keyword">az container create </span><span class="hljs-parameter">-g</span> MyResourceGroup <span class="hljs-parameter">--name</span> myapp <span class="hljs-parameter">--image</span> myimage:latest <span class="hljs-parameter">--cpu</span> <span class="hljs-number">1</span> <span class="hljs-parameter">--memory</span> <span class="hljs-number">1</span></span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az container delete [--ids]
+                    [--name]
+                    [--resource-group]
+                    [--subscription]
+                    [--yes]"><span><span class="hljs-keyword">az container delete </span><span class="hljs-parameter">[--ids]</span>
+  <span class="hljs-parameter">[--name]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--subscription]</span>
+  <span class="hljs-parameter">[--yes]</span></span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az container list [--query-examples]
+                  [--resource-group]
+                  [--subscription]"><span><span class="hljs-keyword">az container list </span><span class="hljs-parameter">[--query-examples]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--subscription]</span></span></code></pre>
+</div>
+
+<div>
+  <h1>az Cosmos  DB</h1>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-interactive="azurecli" data-author-content="az cosmosdb create --name MyCosmosDBDatabaseAccount --resource-group MyResourceGroup --subscription MySubscription"><span><span class="hljs-keyword">az cosmosdb create </span><span class="hljs-parameter">--name</span> MyCosmosDBDatabaseAccount <span class="hljs-parameter">--resource-group</span> MyResourceGroup <span class="hljs-parameter">--subscription</span> MySubscription</span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az cosmosdb delete [--ids]
+                   [--name]
+                   [--resource-group]
+                   [--subscription]
+                   [--yes]"><span><span class="hljs-keyword">az cosmosdb delete </span><span class="hljs-parameter">[--ids]</span>
+  <span class="hljs-parameter">[--name]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--subscription]</span>
+  <span class="hljs-parameter">[--yes]</span></span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az cosmosdb list [--query-examples]
+                 [--resource-group]
+                 [--subscription]"><span><span class="hljs-keyword">az cosmosdb list </span><span class="hljs-parameter">[--query-examples]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--subscription]</span></span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az cosmosdb show [--ids]
+                 [--name]
+                 [--query-examples]
+                 [--resource-group]
+                 [--subscription]"><span><span class="hljs-keyword">az cosmosdb show </span><span class="hljs-parameter">[--ids]</span>
+  <span class="hljs-parameter">[--name]</span>
+  <span class="hljs-parameter">[--query-examples]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--subscription]</span></span></code></pre>
+</div>
+
+<div>
+  <h1>az keyvault</h1>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-interactive="azurecli" data-author-content="az keyvault create --location westus2 --name MyKeyVault --resource-group MyResourceGroup --network-acls network-acls-example.json"><span><span class="hljs-keyword">az keyvault create </span><span class="hljs-parameter">--location</span> westus2 <span class="hljs-parameter">--name</span> MyKeyVault <span class="hljs-parameter">--resource-group</span> MyResourceGroup <span class="hljs-parameter">--network-acls</span> network<span class="hljs-parameter">-acls-example</span>.<span class="hljs-literal">json</span></span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az keyvault delete [--hsm-name]
+                   [--name]
+                   [--no-wait]
+                   [--resource-group]
+                   [--subscription]"><span><span class="hljs-keyword">az keyvault delete </span><span class="hljs-parameter">[--hsm-name]</span>
+  <span class="hljs-parameter">[--name]</span>
+  <span class="hljs-parameter">[--no-wait]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--subscription]</span></span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az keyvault list [--query-examples]
+                 [--resource-group]
+                 [--resource-type]
+                 [--subscription]"><span><span class="hljs-keyword">az keyvault list </span><span class="hljs-parameter">[--query-examples]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--resource-type]</span>
+  <span class="hljs-parameter">[--subscription]</span></span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az keyvault show [--hsm-name]
+                 [--name]
+                 [--query-examples]
+                 [--resource-group]
+                 [--subscription]"><span><span class="hljs-keyword">az keyvault show </span><span class="hljs-parameter">[--hsm-name]</span>
+  <span class="hljs-parameter">[--name]</span>
+  <span class="hljs-parameter">[--query-examples]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--subscription]</span></span></code></pre>
+</div>
+
+<div>
+  <h1> az redis</h1>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-interactive="azurecli" data-author-content="az redis create --location westus2 --name MyRedisCache --resource-group MyResourceGroup --sku Basic --vm-size c0"><span><span class="hljs-keyword">az redis create </span><span class="hljs-parameter">--location</span> westus2 <span class="hljs-parameter">--name</span> MyRedisCache <span class="hljs-parameter">--resource-group</span> MyResourceGroup <span class="hljs-parameter">--sku</span> Basic <span class="hljs-parameter">--vm-size</span> c0</span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az redis delete [--ids]
+                [--name]
+                [--resource-group]
+                [--subscription]
+                [--yes]"><span><span class="hljs-keyword">az redis delete </span><span class="hljs-parameter">[--ids]</span>
+  <span class="hljs-parameter">[--name]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--subscription]</span>
+  <span class="hljs-parameter">[--yes]</span></span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az redis list [--query-examples]
+              [--resource-group]
+              [--subscription]"><span><span class="hljs-keyword">az redis list </span><span class="hljs-parameter">[--query-examples]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--subscription]</span></span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az redis show [--ids]
+              [--name]
+              [--query-examples]
+              [--resource-group]
+              [--subscription]"><span><span class="hljs-keyword">az redis show </span><span class="hljs-parameter">[--ids]</span>
+  <span class="hljs-parameter">[--name]</span>
+  <span class="hljs-parameter">[--query-examples]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--subscription]</span></span></code></pre>
+
+</div>
+
+<div>
+  <h1>az webapp</h1>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-interactive="azurecli" data-author-content="az webapp create -g MyResourceGroup -p MyPlan -n MyUniqueAppName --runtime &quot;java|11|Java SE|8&quot;"><span><span class="hljs-keyword">az webapp create </span><span class="hljs-parameter">-g</span> MyResourceGroup <span class="hljs-parameter">-p</span> MyPlan <span class="hljs-parameter">-n</span> MyUniqueAppName <span class="hljs-parameter">--runtime</span> <span class="hljs-string">"java|11|Java SE|8"</span></span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-interactive="azurecli" data-author-content="az webapp delete --name MyWebapp --resource-group MyResourceGroup"><span><span class="hljs-keyword">az webapp delete </span><span class="hljs-parameter">--name</span> MyWebapp <span class="hljs-parameter">--resource-group</span> MyResourceGroup</span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-author-content="az webapp list [--query-examples]
+               [--resource-group]
+               [--subscription]"><span><span class="hljs-keyword">az webapp list </span><span class="hljs-parameter">[--query-examples]</span>
+  <span class="hljs-parameter">[--resource-group]</span>
+  <span class="hljs-parameter">[--subscription]</span></span></code></pre>
+
+  <pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" dir="ltr" data-interactive="azurecli" data-author-content="az webapp show --name MyWebapp --resource-group MyResourceGroup"><span><span class="hljs-keyword">az webapp show </span><span class="hljs-parameter">--name</span> MyWebapp <span class="hljs-parameter">--resource-group</span> MyResourceGroup</span></code></pre>
 </div>
