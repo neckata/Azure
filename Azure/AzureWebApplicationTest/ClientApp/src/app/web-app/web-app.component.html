@@ -1,0 +1,35 @@
+<h1>Create Web App with Commands</h1>
+
+<pre tabindex="0" class="has-inner-focus"><code class="lang-bash">
+<span class="hljs-built_in">export</span> RESOURCE_GROUP=[sandbox resource group name]
+<span class="hljs-built_in">export</span> AZURE_REGION=centralus
+<span class="hljs-built_in">export</span> AZURE_APP_PLAN=popupappplan-<span class="hljs-variable">$RANDOM</span>
+<span class="hljs-built_in">export</span> AZURE_WEB_APP=popupwebapp-<span class="hljs-variable">$RANDOM</span>
+</code></pre>
+
+<pre tabindex="0" class="has-inner-focus">
+<code class="lang-azurecli">
+<span>
+<span class="hljs-keyword">az appservice plan create </span>
+  <span class="hljs-parameter">--name</span><span class="hljs-variable">$AZURE_APP_PLAN</span>
+  <span class="hljs-parameter">--resource-group</span><span class="hljs-variable">$RESOURCE_GROUP</span>
+  <span class="hljs-parameter">--location</span><span class="hljs-variable">$AZURE_REGION</span>
+  <span class="hljs-parameter">--sku</span> FREE
+</span>
+  </code>
+</pre>
+
+<pre tabindex="0" class="has-inner-focus">
+<code class="lang-azurecli"><span><span class="hljs-keyword">az webapp create </span>
+  <span class="hljs-parameter">--name</span> <span class="hljs-variable">$AZURE_WEB_APP</span>
+  <span class="hljs-parameter">--resource-group</span> <span class="hljs-variable">$RESOURCE_GROUP</span>
+  <span class="hljs-parameter">--plan</span> <span class="hljs-variable">$AZURE_APP_PLAN</span>
+</span></code></pre>
+
+<pre tabindex="0" class="has-inner-focus"><code class="lang-azurecli" ><span><span class="hljs-keyword">az webapp deployment source </span>config
+  <span class="hljs-parameter">--name</span> <span class="hljs-variable">$AZURE_WEB_APP</span>
+  <span class="hljs-parameter">--resource-group</span> <span class="hljs-variable">$RESOURCE_GROUP</span>
+  <span class="hljs-parameter">--repo-url</span> <span class="hljs-string">"https://github.com/Azure-Samples/php-docs-hello-world"</span>
+  <span class="hljs-parameter">--branch</span> master
+  <span class="hljs-parameter">--manual-integration</span>
+</span></code></pre>

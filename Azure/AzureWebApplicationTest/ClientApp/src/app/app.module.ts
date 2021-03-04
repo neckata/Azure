@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CliCommandsComponent } from './cli-commands/cli-commands.component';
+import { WebAppComponent } from './web-app/web-app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CliCommandsComponent
+    CliCommandsComponent,
+    WebAppComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -22,7 +24,8 @@ import { CliCommandsComponent } from './cli-commands/cli-commands.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'cli-commands', component: CliCommandsComponent }
+      { path: 'cli-commands', component: CliCommandsComponent },
+      { path: 'web-app', component: WebAppComponent }
     ])
   ],
   providers: [],

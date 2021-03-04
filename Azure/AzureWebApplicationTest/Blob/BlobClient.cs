@@ -9,9 +9,10 @@ namespace AzureWebApplicationTest.BLob
 
         public static void UploadBlob()
         {
-            BlobContainerClient container = GetBlobContainerClient();
             string blobName = "docs-and-friends-selfie-stick";
             string fileName = "docs-and-friends-selfie-stick.png";
+
+            BlobContainerClient container = GetBlobContainerClient();
             BlobClient blobClient = container.GetBlobClient(blobName);
             blobClient.Upload(fileName, true);
         }
