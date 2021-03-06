@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace Functions
+namespace Functions.Functions
 {
     public static class WatchPortalFunction
     {
