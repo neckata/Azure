@@ -1,8 +1,12 @@
 ﻿using AzureWebApplicationTest.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Identity.Client;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -11,27 +15,31 @@ namespace AzureWebApplicationTest.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        readonly IConfidentialClientApplication _tokenAcquisition;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(IConfidentialClientApplication tokenAcquisition)
+        public HomeController(ILogger<HomeController> logger)
         {
-            this._tokenAcquisition = tokenAcquisition;
+            _logger = logger;
         }
+
 
         public async Task<IActionResult> Index()
         {
-            IConfidentialClientApplication app;
+            var token = await HttpContext.GetTokenAsync(OpenIdConnectParameterNames.IdToken);
+            Debug.WriteLine($"Identity Token : {token}");
+            foreach (var _claim in User.Claims)
+            {
+                Debug.WriteLine($"Claim Type : {_claim.Type}");
+                Debug.WriteLine($"Claim Value : {_claim.Value}");
+            }
 
-            app = ConfidentialClientApplicationBuilder.Create("clientId")
-                    .WithTenantId("{tenantID}")
-                    .WithClientSecret("ClientSecret")
-                    .Build();
-
-            string[] scopes = new string[] { "user.read" };
-            var accessToken = await app.AcquireTokenForClient(scopes).ExecuteAsync();
-            ViewBag.token = accessToken.AccessToken;
             return View();
+        }
+
+        public async Task Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignOutAsync(OpenIdConnectDefaults.AuthenticationScheme);
         }
 
         public IActionResult Privacy()

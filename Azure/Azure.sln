@@ -9,17 +9,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureWebApplicationTest", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VM", "VM\VM.csproj", "{1BA2D170-A560-4057-80C6-69A6F76F71AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureBlobStorage", "AzureBlobStorage\AzureBlobStorage.csproj", "{4A5ECB73-162B-4D5C-9326-8AF3BEDD1254}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureBlobStorage", "AzureBlobStorage\AzureBlobStorage.csproj", "{4A5ECB73-162B-4D5C-9326-8AF3BEDD1254}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAS", "SAS\SAS.csproj", "{71C8C5EA-8F14-4BC0-A213-5DD29E29A3B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAS", "SAS\SAS.csproj", "{71C8C5EA-8F14-4BC0-A213-5DD29E29A3B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlobLease", "BlobLease\BlobLease.csproj", "{4A29C29A-388F-49E0-BE98-1C6FEB9A9D4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlobLease", "BlobLease\BlobLease.csproj", "{4A29C29A-388F-49E0-BE98-1C6FEB9A9D4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableStorage", "TableStorage\TableStorage.csproj", "{9A89750B-431E-4FE7-A33A-C9A61E6CB526}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TableStorage", "TableStorage\TableStorage.csproj", "{9A89750B-431E-4FE7-A33A-C9A61E6CB526}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageQueue", "StorageQueue\StorageQueue.csproj", "{95154C3F-8109-4ACC-865A-F5882B693E8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageQueue", "StorageQueue\StorageQueue.csproj", "{95154C3F-8109-4ACC-865A-F5882B693E8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmosSQL", "CosmosSQL\CosmosSQL.csproj", "{32B5330F-2EB9-43D0-85D0-C69E103AB3FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CosmosSQL", "CosmosSQL\CosmosSQL.csproj", "{32B5330F-2EB9-43D0-85D0-C69E103AB3FB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "KeyVault\KeyVault.csproj", "{3E3A4A1F-C28B-4AB8-8B72-D46C20B84251}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureCache", "AzureCache\AzureCache.csproj", "{4ACDB413-5448-4B12-AACA-7BF6F3394F48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Queue", "Queue\Queue.csproj", "{BAFB6B3D-8339-4FF0-9932-EF409A5ADFE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +69,18 @@ Global
 		{32B5330F-2EB9-43D0-85D0-C69E103AB3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32B5330F-2EB9-43D0-85D0-C69E103AB3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32B5330F-2EB9-43D0-85D0-C69E103AB3FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E3A4A1F-C28B-4AB8-8B72-D46C20B84251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E3A4A1F-C28B-4AB8-8B72-D46C20B84251}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E3A4A1F-C28B-4AB8-8B72-D46C20B84251}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E3A4A1F-C28B-4AB8-8B72-D46C20B84251}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ACDB413-5448-4B12-AACA-7BF6F3394F48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ACDB413-5448-4B12-AACA-7BF6F3394F48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ACDB413-5448-4B12-AACA-7BF6F3394F48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ACDB413-5448-4B12-AACA-7BF6F3394F48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAFB6B3D-8339-4FF0-9932-EF409A5ADFE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAFB6B3D-8339-4FF0-9932-EF409A5ADFE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAFB6B3D-8339-4FF0-9932-EF409A5ADFE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAFB6B3D-8339-4FF0-9932-EF409A5ADFE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
