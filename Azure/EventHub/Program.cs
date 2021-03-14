@@ -1,78 +1,110 @@
 ﻿using Azure.Messaging.EventHubs;
-using Azure.Messaging.EventHubs.Consumer;
 using Azure.Messaging.EventHubs.Producer;
-using LumenWorks.Framework.IO.Csv;
 using System;
-using System.Data;
-using System.IO;
+using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using Azure.Messaging.EventHubs.Consumer;
+using System.Threading;
+using Azure.Storage.Blobs;
+using Azure.Messaging.EventHubs.Processor;
 
 namespace EventHub
 {
     class Program
     {
-        private static string connstring = "";
-        private static string hubname = "apphub";
-        static DataTable dt_table;
+        private static string _bus_connection = "Endpoint=sb://appname.servicebus.windows.net/;SharedAccessKeyName=demo;SharedAccessKey=Dz60v7IXFFmFGWVMGSfmONyouCHa0S3/IvQINDZ3rAw=;EntityPath=apphub";
+        private static string _hubname = "apphub";
+        private static string _storage_account = "DefaultEndpointsProtocol=https;AccountName=demostore3000;AccountKey=uTR9XQL25G/uxoimMo8xusantfPwhrdNXcssNA0g7Od5pM4Uzxl9C+i0U1iIRCM3JucXq9/F34NceJ85yHNdiw==;EndpointSuffix=core.windows.net";
+        private static string _container = "processor";
+
+        static string[] cities = new string[]
+        {
+            "Burgas","Varna","Sofia","Plovdiv"
+        };
+
         static void Main(string[] args)
         {
-            LoadData();
             SendData().Wait();
-            GetEvents().Wait();
-        }
-
-        static private async Task GetEvents()
-        {
-            EventHubConsumerClient client = new EventHubConsumerClient("$Default", connstring, hubname);
-
-            var cancellation = new CancellationToken();
-
-            Console.WriteLine("Getting the events");
-            await foreach (PartitionEvent Allevent in client.ReadEventsAsync(cancellation))
-            {
-                EventData event_data = Allevent.Data;
-                Console.WriteLine(Encoding.UTF8.GetString(event_data.Body.ToArray()));
-
-            }
-        }
-
-        private static void LoadData()
-        {
-            dt_table = new DataTable();
-            using (var csvReader = new CsvReader(new StreamReader(System.IO.File.OpenRead("QueryResult.csv")), true))
-            {
-                dt_table.Load(csvReader);
-            }
+            //GetEvents().Wait();
+            //SetProccessorSubscribe().Wait();
         }
 
         private static async Task SendData()
         {
-            EventHubProducerClient client = new EventHubProducerClient(connstring, hubname);
+            EventHubProducerClient client = new EventHubProducerClient(_bus_connection, _hubname);
+            string _partition = (await client.GetPartitionIdsAsync()).First();
 
-            foreach (DataRow row in dt_table.Rows)
+            var _options = new CreateBatchOptions
             {
-                ActivityData obj = new ActivityData();
-                obj.Correlationid = row[0].ToString();
-                obj.Operationname = row[1].ToString();
-                obj.status = row[2].ToString();
-                obj.EventCategory = row[3].ToString();
-                obj.Level = row[4].ToString();
-                obj.dttime = DateTime.Parse(row[5].ToString());
-                obj.subscription = row[6].ToString();
-                obj.InitiatedBy = row[7].ToString();
-                obj.resourcetype = row[8].ToString();
-                obj.resourcegroup = row[9].ToString();
-                obj.resource = row[10].ToString();
-                obj.id = Guid.NewGuid().ToString();
+                PartitionId = _partition
+            };
 
-                using EventDataBatch batch_obj = await client.CreateBatchAsync();
+            EventDataBatch batch_obj = await client.CreateBatchAsync(_options);
+            Random _rnd = new Random();
+            for (int i = 1; i <= 10; i++)
+            {
+                Order obj = new Order(i, cities[_rnd.Next(0, 4)], _rnd.Next(1, 100));
                 batch_obj.TryAdd(new EventData(Encoding.UTF8.GetBytes(obj.ToString())));
-                await client.SendAsync(batch_obj);
 
-                Console.WriteLine("Sending Data {0}", obj.id);
             }
+            await client.SendAsync(batch_obj);
+
+            Console.WriteLine("Sent all Orders");
+        }
+
+        static private async Task GetEvents()
+        {
+            EventHubConsumerClient client = new EventHubConsumerClient("$Default", _bus_connection, _hubname);
+
+            string _partition = (await client.GetPartitionIdsAsync()).First();
+
+            var cancellation = new CancellationToken();
+
+            EventPosition _position = EventPosition.FromSequenceNumber(5);
+            Console.WriteLine("Getting events from a certain position from a particular partition");
+
+            await foreach (PartitionEvent _recent_event in client.ReadEventsFromPartitionAsync(_partition, _position, cancellation))
+            {
+                EventData event_data = _recent_event.Data;
+
+                Console.WriteLine(Encoding.UTF8.GetString(event_data.Body.ToArray()));
+                Console.WriteLine($"Sequence Number : {event_data.SequenceNumber}");
+            }
+        }
+
+        static private async Task SetProccessorSubscribe()
+        {
+            BlobContainerClient _blob_client = new BlobContainerClient(_storage_account, _container);
+
+            EventProcessorClient _event_client = new EventProcessorClient(_blob_client, "$Default", _bus_connection, _hubname);
+
+            _event_client.ProcessEventAsync += Process_Message;
+            _event_client.ProcessErrorAsync += Error_Handler;
+
+            await _event_client.StartProcessingAsync();
+
+            await Task.Delay(TimeSpan.FromSeconds(100));
+
+            await _event_client.StopProcessingAsync();
+
+            Console.WriteLine("Completed");
+        }
+
+        static async Task Process_Message(ProcessEventArgs eventArgs)
+        {
+            Console.WriteLine("Getting the events");
+            Console.WriteLine(Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+
+            await eventArgs.UpdateCheckpointAsync(eventArgs.CancellationToken);
+        }
+
+        static Task Error_Handler(ProcessErrorEventArgs eventArgs)
+        {
+            Console.WriteLine("An Error has occurred");
+            Console.WriteLine(eventArgs.Exception.Message);
+
+            return Task.CompletedTask;
         }
     }
 }
