@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EventHub
+﻿namespace EventHub
 {
     public class Order
     {
         public int Id { get; set; }
+
         public string Category { get; set; }
+
         public int Quantity { get; set; }
+
         public Order(int p_id,string p_category,int p_quantity)
         {
             Id = p_id;

@@ -53,7 +53,7 @@ namespace EventHub
             Console.WriteLine("Sent all Orders");
         }
 
-        static private async Task GetEvents()
+        private static async Task GetEvents()
         {
             EventHubConsumerClient client = new EventHubConsumerClient("$Default", _bus_connection, _hubname);
 
@@ -73,7 +73,7 @@ namespace EventHub
             }
         }
 
-        static private async Task SetProccessorSubscribe()
+        private static async Task SetProccessorSubscribe()
         {
             BlobContainerClient _blob_client = new BlobContainerClient(_storage_account, _container);
 
@@ -91,7 +91,7 @@ namespace EventHub
             Console.WriteLine("Completed");
         }
 
-        static async Task Process_Message(ProcessEventArgs eventArgs)
+        private static async Task Process_Message(ProcessEventArgs eventArgs)
         {
             Console.WriteLine("Getting the events");
             Console.WriteLine(Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
@@ -99,7 +99,7 @@ namespace EventHub
             await eventArgs.UpdateCheckpointAsync(eventArgs.CancellationToken);
         }
 
-        static Task Error_Handler(ProcessErrorEventArgs eventArgs)
+        private static Task Error_Handler(ProcessErrorEventArgs eventArgs)
         {
             Console.WriteLine("An Error has occurred");
             Console.WriteLine(eventArgs.Exception.Message);
