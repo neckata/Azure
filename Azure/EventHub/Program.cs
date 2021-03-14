@@ -13,10 +13,10 @@ namespace EventHub
 {
     class Program
     {
-        private static string _bus_connection = "Endpoint=sb://appname.servicebus.windows.net/;SharedAccessKeyName=demo;SharedAccessKey=Dz60v7IXFFmFGWVMGSfmONyouCHa0S3/IvQINDZ3rAw=;EntityPath=apphub";
+        private static string _bus_connection = "";
         private static string _hubname = "apphub";
-        private static string _storage_account = "DefaultEndpointsProtocol=https;AccountName=demostore3000;AccountKey=uTR9XQL25G/uxoimMo8xusantfPwhrdNXcssNA0g7Od5pM4Uzxl9C+i0U1iIRCM3JucXq9/F34NceJ85yHNdiw==;EndpointSuffix=core.windows.net";
-        private static string _container = "processor";
+        private static string _storage_account = "";
+        private static string _container = "check";
 
         static string[] cities = new string[]
         {
@@ -25,7 +25,7 @@ namespace EventHub
 
         static void Main(string[] args)
         {
-            SendData().Wait();
+            //SendData().Wait();
             //GetEvents().Wait();
             //SetProccessorSubscribe().Wait();
         }
@@ -42,12 +42,13 @@ namespace EventHub
 
             EventDataBatch batch_obj = await client.CreateBatchAsync(_options);
             Random _rnd = new Random();
+
             for (int i = 1; i <= 10; i++)
             {
                 Order obj = new Order(i, cities[_rnd.Next(0, 4)], _rnd.Next(1, 100));
                 batch_obj.TryAdd(new EventData(Encoding.UTF8.GetBytes(obj.ToString())));
-
             }
+
             await client.SendAsync(batch_obj);
 
             Console.WriteLine("Sent all Orders");
