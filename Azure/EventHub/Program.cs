@@ -13,9 +13,10 @@ namespace EventHub
 {
     class Program
     {
-        private static string _bus_connection = "";
+        private static string __event_hub_connection_string = "Endpoint=sb://eventhubnikola.servicebus.windows.net/;SharedAccessKeyName=hubpolicy;SharedAccessKey=ku3qEY4nH7MBNImLL4pW3EBD8YSbs2yEDe4am6HYZEE=";
         private static string _hubname = "apphub";
-        private static string _storage_account = "";
+        private static string _consumer_group = "$Default";
+        private static string _storage_account = "DefaultEndpointsProtocol=https;AccountName=storateaccountnikola;AccountKey=Qp3689dkGagXUbO7H2t+/3rWmCmnaGDayXg3Vjz9XhZn8XolkpfRotytV8xFBoBayIOgikZfyOnbzbByrZuH4w==;EndpointSuffix=core.windows.net";
         private static string _container = "check";
 
         static string[] cities = new string[]
@@ -27,12 +28,12 @@ namespace EventHub
         {
             //SendData().Wait();
             //GetEvents().Wait();
-            //SetProccessorSubscribe().Wait();
+            SetProccessorSubscribe().Wait();
         }
 
         private static async Task SendData()
         {
-            EventHubProducerClient client = new EventHubProducerClient(_bus_connection, _hubname);
+            EventHubProducerClient client = new EventHubProducerClient(__event_hub_connection_string, _hubname);
             string _partition = (await client.GetPartitionIdsAsync()).First();
 
             var _options = new CreateBatchOptions
@@ -41,6 +42,7 @@ namespace EventHub
             };
 
             EventDataBatch batch_obj = await client.CreateBatchAsync(_options);
+
             Random _rnd = new Random();
 
             for (int i = 1; i <= 10; i++)
@@ -56,13 +58,13 @@ namespace EventHub
 
         private static async Task GetEvents()
         {
-            EventHubConsumerClient client = new EventHubConsumerClient("$Default", _bus_connection, _hubname);
+            EventHubConsumerClient client = new EventHubConsumerClient(_consumer_group, __event_hub_connection_string, _hubname);
 
             string _partition = (await client.GetPartitionIdsAsync()).First();
 
             var cancellation = new CancellationToken();
 
-            EventPosition _position = EventPosition.FromSequenceNumber(5);
+            EventPosition _position = EventPosition.FromSequenceNumber(1);
             Console.WriteLine("Getting events from a certain position from a particular partition");
 
             await foreach (PartitionEvent _recent_event in client.ReadEventsFromPartitionAsync(_partition, _position, cancellation))
@@ -78,7 +80,7 @@ namespace EventHub
         {
             BlobContainerClient _blob_client = new BlobContainerClient(_storage_account, _container);
 
-            EventProcessorClient _event_client = new EventProcessorClient(_blob_client, "$Default", _bus_connection, _hubname);
+            EventProcessorClient _event_client = new EventProcessorClient(_blob_client, _consumer_group, __event_hub_connection_string, _hubname);
 
             _event_client.ProcessEventAsync += Process_Message;
             _event_client.ProcessErrorAsync += Error_Handler;
@@ -96,6 +98,7 @@ namespace EventHub
         {
             Console.WriteLine("Getting the events");
             Console.WriteLine(Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+            Console.WriteLine($"Sequence Number : {eventArgs.Data.SequenceNumber}");
 
             await eventArgs.UpdateCheckpointAsync(eventArgs.CancellationToken);
         }
