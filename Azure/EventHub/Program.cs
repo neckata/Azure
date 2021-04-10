@@ -13,10 +13,10 @@ namespace EventHub
 {
     class Program
     {
-        private static string __event_hub_connection_string = "Endpoint=sb://eventhubnikola.servicebus.windows.net/;SharedAccessKeyName=hubpolicy;SharedAccessKey=ku3qEY4nH7MBNImLL4pW3EBD8YSbs2yEDe4am6HYZEE=";
+        private static string __event_hub_connection_string = ""
         private static string _hubname = "apphub";
         private static string _consumer_group = "$Default";
-        private static string _storage_account = "DefaultEndpointsProtocol=https;AccountName=storateaccountnikola;AccountKey=Qp3689dkGagXUbO7H2t+/3rWmCmnaGDayXg3Vjz9XhZn8XolkpfRotytV8xFBoBayIOgikZfyOnbzbByrZuH4w==;EndpointSuffix=core.windows.net";
+        private static string _storage_account = "";
         private static string _container = "check";
 
         static string[] cities = new string[]
